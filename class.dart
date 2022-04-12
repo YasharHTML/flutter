@@ -38,6 +38,16 @@ class Builder{
         return Builder(endpoints: x);
     }
 
+    Builder insertBefore(String t, String endpoint) {
+        var s = this.endpoints.substring(0, this.endpoints.indexOf(t)) + endpoint + "/" + this.endpoints.substring(this.endpoints.indexOf(t), this.endpoints.length);
+        return Builder(endpoints: s);
+    }
+
+    Builder replace(String t, String endpoint) {
+        var s = this.endpoints.substring(0, this.endpoints.indexOf(t)) + endpoint + this.endpoints.substring(this.endpoints.indexOf(t) + t.length, this.endpoints.length);
+        return Builder(endpoints: s);
+    }
+
     String build(){
         return endpoints;
     }
